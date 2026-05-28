@@ -1,4 +1,4 @@
-# POC — Single Sign-On entre dois Keycloaks distintos
+# Estudo — Single Sign-On entre dois Keycloaks distintos
 
 Prova de conceito de SSO federado usando dois Keycloaks independentes e duas APIs .NET 10 Minimal API.
 
