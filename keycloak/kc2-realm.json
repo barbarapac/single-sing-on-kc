@@ -1,0 +1,74 @@
+{
+  "realm": "realm2",
+  "displayName": "Realm 2 — App 2",
+  "enabled": true,
+  "sslRequired": "none",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "clients": [
+    {
+      "clientId": "app2-client",
+      "name": "Aplicação 2",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "app2-secret",
+      "redirectUris": ["http://localhost:5002/*"],
+      "webOrigins": ["http://localhost:5002"],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:5002/*"
+      },
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "protocol": "openid-connect"
+    }
+  ],
+  "identityProviders": [
+    {
+      "alias": "kc1",
+      "displayName": "Login via Keycloak 1",
+      "providerId": "oidc",
+      "enabled": true,
+      "trustEmail": true,
+      "storeToken": false,
+      "addReadTokenRoleOnCreate": false,
+      "authenticateByDefault": false,
+      "linkOnly": false,
+      "firstBrokerLoginFlowAlias": "first broker login",
+      "config": {
+        "clientId": "kc2-broker-client",
+        "clientSecret": "kc2-broker-secret",
+        "authorizationUrl": "http://localhost:8080/realms/realm1/protocol/openid-connect/auth",
+        "tokenUrl": "http://keycloak1:8080/realms/realm1/protocol/openid-connect/token",
+        "jwksUrl": "http://keycloak1:8080/realms/realm1/protocol/openid-connect/certs",
+        "userInfoUrl": "http://keycloak1:8080/realms/realm1/protocol/openid-connect/userinfo",
+        "issuer": "http://localhost:8080/realms/realm1",
+        "defaultScope": "openid profile email",
+        "validateSignature": "true",
+        "useJwksUrl": "true",
+        "pkceEnabled": "false",
+        "syncMode": "IMPORT"
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "user2",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "user2@example.com",
+      "firstName": "Usuário",
+      "lastName": "Dois",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password2",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

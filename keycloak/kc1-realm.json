@@ -1,0 +1,68 @@
+{
+  "realm": "realm1",
+  "displayName": "Realm 1 — App 1",
+  "enabled": true,
+  "sslRequired": "none",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "clients": [
+    {
+      "clientId": "app1-client",
+      "name": "Aplicação 1",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "app1-secret",
+      "redirectUris": ["http://localhost:5001/*"],
+      "webOrigins": ["http://localhost:5001"],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:5001/*"
+      },
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "protocol": "openid-connect"
+    },
+    {
+      "clientId": "kc2-broker-client",
+      "name": "KC2 Broker",
+      "description": "Client usado pelo KC2 para federar autenticação no KC1",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "kc2-broker-secret",
+      "redirectUris": [
+        "http://localhost:8081/realms/realm2/broker/kc1/endpoint",
+        "http://localhost:8081/realms/realm2/broker/kc1/endpoint*"
+      ],
+      "webOrigins": ["http://localhost:8081"],
+      "attributes": {
+        "post.logout.redirect.uris": "http://localhost:8081/realms/realm2/broker/kc1/endpoint*"
+      },
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "serviceAccountsEnabled": false,
+      "protocol": "openid-connect"
+    }
+  ],
+  "users": [
+    {
+      "username": "user1",
+      "enabled": true,
+      "emailVerified": true,
+      "email": "user1@example.com",
+      "firstName": "Usuário",
+      "lastName": "Um",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password1",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}
